@@ -1,7 +1,8 @@
 import string
+import json
 
-
-todolist = [["bring da dawg", False], ["wake up", True]]
+todo_file = open ("todolist.json")
+todolist = json.load(todo_file)
 
 def print_to_do_list(message):
     print(message)
@@ -15,7 +16,7 @@ def print_to_do_list(message):
 
 def ask_action():
     print("What would you like to do?")
-    print("[X] check a to-do as done, [A] add a to-do, [R] remove a to-do, [S] show the list, [C] Clear the to-do list")
+    print("[X] check a to-do as done, [A] add a to-do, [R] remove a to-do, [S] show the list, [C] Clear the to-do list, [Q] Quit the program, saving the list")
 
     action_input = input("---> ")
 
@@ -58,6 +59,12 @@ def ask_action():
         case "s":
             print_to_do_list("Here it is")
             ask_action()
+        
+        case "q":
+            with open("todolist.json", "w") as file:
+                json.dump(todolist, file)
+
+
         case _:
             print("This action is not valid")
             ask_action()
