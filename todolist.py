@@ -1,7 +1,7 @@
 import string
 import json
 
-todo_file = open ("todolist.json")
+todo_file = open ("todolist.json", "r")
 todolist = json.load(todo_file)
 
 def print_to_do_list(message):
